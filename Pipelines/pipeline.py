@@ -1,18 +1,40 @@
+from idlelib.query import Query
+
 import pandas as pd
 import sqlite3
 
-df = pd.read_csv("netflix.csv")
+# Extracting step
+def extract():
+    return pd.read_csv("netflix.csv")
 
-df = df.drop_duplicates()
-df = df.dropna()
 
-conn = sqlite3.connect("my_database.db")
+# Transform step
 
-df.to_sql("Tests_table", conn, if_exists="replace", index=False)
+def transform(df):
+    df = df.drop_duplicates()
+    df = df.dropna(subset=["title", "rating"])
+    df = df[["title", "rating", "type"]]
 
-result = pd.read_sql("SELECT * FROM Test_table LIMIT 10", conn)
 
-# print(result)
+    return df
 
-print(df.head())
+# Load data step
+
+def load(df):
+    conn = sqlite3.connect("netflix.db")
+    df.to_sql("movies", conn, if_exists="replace", index=False)
+    return conn
+
+# Query step
+def query(conn):
+    return pd.read_sql_query("""SELECT title, rating FROM movies WHERE rating = 'R' """, conn)
+
+# Calling main functiins
+
+df = extract()
+df = transform(df)
+conn = load(df)
+result = query(conn)
+
+print(result.head())
 conn.close()
