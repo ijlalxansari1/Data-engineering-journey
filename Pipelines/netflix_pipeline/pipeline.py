@@ -27,7 +27,7 @@ def load(df):
 
 # Query step
 def query(conn):
-    return pd.read_sql_query("""SELECT title, rating FROM movies WHERE rating = 'R' """, conn)
+    return pd.read_sql_query("""SELECT * FROM movies; """, conn)
 
 # Calling main functiins
 
@@ -37,4 +37,5 @@ conn = load(df)
 result = query(conn)
 
 print(result.head())
+print(df.info())
 conn.close()
