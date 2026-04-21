@@ -3,7 +3,7 @@ import pandas as pd
 df = pd.read_csv("./UCL/attacking.csv")
 
 # show data
-# print(df.head())
+print(df.head())
 
 # filter something
 # print(df['match_played'] > 8)
