@@ -1,0 +1,5 @@
+name,age,is_valid_age,email,country
+john doe,17,False,john@example.com,Pakistan
+john caine,18,True,caine@example.com,Norway
+sara khan,25,True,sara@example.com,Pakistan
+bruce wayne,35,True,bruce@wayne.com,America
