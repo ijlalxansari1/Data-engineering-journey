@@ -11,10 +11,12 @@ record = {
 
 # dictionary manipulation
 
-
-
 def is_valid_age(age):
-    return 18 <= age <= 120
+    try:
+        age = int(age)
+        return 18 <= age <= 120
+    except (ValueError, TypeError):
+        return False
 
 
 # Test it
