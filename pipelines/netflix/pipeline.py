@@ -1,11 +1,11 @@
-from idlelib.query import Query
+
 
 import pandas as pd
 import sqlite3
 
 # Extracting step
 def extract():
-    return pd.read_csv("netflix.csv")
+    return pd.read_csv("../../data/netflix/netflix.csv  ")
 
 
 # Transform step
