@@ -1,12 +1,9 @@
 import pandas as pd
-from annotated_types import UpperCase
 
 df = pd.read_csv("../Employees.csv")
 
-df["bonus"] = df["salary"] * 0.10
-# df["age"] = df["salary"].astype(int)
 df = df.rename(columns={"salary": "annual_salary"})
-
+df["bonus"] = df["annual_salary"] * 0.10
 # Fixing NA values
 df["annual_salary"] = df["annual_salary"].fillna(df["annual_salary"].mean())
 df["annual_salary"] = df["annual_salary"].astype(int)
@@ -30,11 +27,11 @@ print(df)
 
 
 
-# filtered = df[(df["annual_salary"] > 40000) & (df["age"] >26)]
-#
-# filtered.to_csv("employees_clean_pandas.csv", index=False)
+filtered = df[(df["annual_salary"] > 40000) & (df["age"] >26)]
 
-# print(filtered)
+filtered.to_csv("employees_clean_pandas.csv", index=False)
+
+print(filtered)
 
 #
 # print(df.shape)    # how many rows and columns?
