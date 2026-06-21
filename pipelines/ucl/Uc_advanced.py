@@ -7,12 +7,15 @@ players = pd.DataFrame({
     "goals": [8, 5, 6, 4 , 4,3]
 })
 
+
+
 # Right table — club info
 clubs = pd.DataFrame({
     "club": ["Man City", "Real Madrid", "Bayern" , "Inter Milan" ],
     "country": ["England", "Spain", "Germany", "Italy"],
     "stadium": ["Etihad", "Bernabeu", "Allianz Arena" , "San Siro"]
 })
+
 
 
 result = pd.merge(players ,clubs, on="club" , how="right"  )
